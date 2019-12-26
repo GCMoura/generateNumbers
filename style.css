@@ -1,0 +1,26 @@
+body {
+    margin: 0px;
+    background: linear-gradient(to right, #1cefff, #c0c0aa);
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.select {
+    width: 400px;
+}
+
+.generate {
+    font-size: 1.5rem;
+    margin-bottom: 50px;
+}
+
+#result {
+    margin-left: 80px;
+    margin-right: 80px;
+}

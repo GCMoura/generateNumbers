@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Gerar Números</title>
+</head>
+
+<body>
+    <div id="app">
+        <select class="custom-select custom-select-lg mb-5 select">
+                <option disabled selected> Escolha o jogo</option> 
+                <option value="5">Quina</option>
+                <option value="6">Mega-Sena</option>
+                <option value="06">Dupla-Sena</option>
+                <option value="15">Lotofácil</option>
+                <option value="50">Lotomania</option>
+              </select>
+        <button class="btn btn-primary generate" @click="generateNumbers">{{btn1}}</button>
+
+        <h3>{{message}}</h3>
+        <hr>
+        <h3 id="result">{{result}}</h3>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                btn1: 'Gerar Números',
+                message: '',
+                result: ""
+            },
+            methods: {
+                generateNumbers() {
+                    let value = document.querySelector('.select').value
+
+                    if (value == "5") {
+                        var list = []
+                        this.result = ""
+                        while (list.length < value) {
+                            let number = Math.floor(Math.random() * 80 + 1)
+
+                            if (list.indexOf(number) == -1) {
+                                list.push(number)
+                            }
+                        }
+                    }
+
+                    if (value == "6") {
+                        var list = []
+                        this.result = ""
+                        while (list.length < value) {
+                            let number = Math.floor(Math.random() * 60 + 1)
+
+                            if (list.indexOf(number) == -1) {
+                                list.push(number)
+                            }
+                        }
+                    }
+
+                    if (value == "06") {
+                        var list = []
+                        this.result = ""
+                        while (list.length < value) {
+                            let number = Math.floor(Math.random() * 50 + 1)
+
+                            if (list.indexOf(number) == -1) {
+                                list.push(number)
+                            }
+                        }
+                    }
+
+                    if (value == "15") {
+                        var list = []
+                        this.result = ""
+                        while (list.length < value) {
+                            let number = Math.floor(Math.random() * 25 + 1)
+
+                            if (list.indexOf(number) == -1) {
+                                list.push(number)
+                            }
+                        }
+                    }
+
+                    if (value == "50") {
+                        var list = []
+                        this.result = ""
+                        while (list.length < value) {
+                            let number = Math.floor(Math.random() * 100 + 1)
+
+                            if (list.indexOf(number) == -1) {
+                                list.push(number)
+                            }
+                        }
+                    }
+                    this.showNumbers(value, list)
+                },
+                showNumbers(value, list) {
+                    list.sort((a, b) => {
+                        if (a < b) return -1;
+                        if (a > b) return 1;
+                        return 0;
+                    })
+                    this.message = 'Os números sorteados são: '
+
+                    for (let i = 0; i < list.length; i++) {
+                        if (i != value - 1) {
+                            this.result += ` ${list[i]} - `
+                        } else {
+                            this.result += ` ${list[i]} `
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
